@@ -1,4 +1,4 @@
-const EnumUsuarios = {
+const EnumDepartamento = {
   MASTER: 1,
   ADM: 2,
   USUARIO_LOGADO: 3,
@@ -19,7 +19,7 @@ const EnumFormaPagamento = {
 };
 
 module.exports = {
-  EnumUsuarios,
+  EnumDepartamento,
   EnumStatus,
   EnumFormaPagamento,
 };

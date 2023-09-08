@@ -1,34 +1,26 @@
-require("dotenv").config();
-const mysql = require("mysql2/promise");
+const sql = require("mssql");
+const dbConfig = require ("./dbConfig")
 
-let connectionPool;
+var pool;
 
 async function connect() {
   try {
-    connectionPool = mysql.createPool({
-      host: process.env.DB_URL,
-      port: process.env.DB_PORT,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DATABASE,
-      connectionLimit: 10,
-      namedPlaceholders: true,
-      timezone: "-03:00",
-    });
-    const connection = await connectionPool.getConnection();
-    return connection;
+    pool = await sql.connect(dbConfig);
+    return pool;
   } catch (error) {
     console.error("Erro ao conectar ao banco de dados: ", error);
     throw error;
   }
 }
 
-async function release(connection) {
+async function release() {
   try {
-    if (connection) {
-      connection.release();
+    if (pool) {
+      await pool.close();
     }
-  } catch (error){}
+  } catch (error) {
+    console.error("Erro ao liberar conexão: ", error);
+  }
 }
 
 module.exports = {

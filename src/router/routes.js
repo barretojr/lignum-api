@@ -6,6 +6,7 @@ const estoque = require("./estoque.route")
 
 app.use("/user", setuser);
 app.use("/api", user);
-app.use("/estoque", estoque)
+
+// app.use("/estoque", estoque);
 
 module.exports = app;
