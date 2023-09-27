@@ -20,8 +20,10 @@ async function listRouteHandler(req, res) {
     const foundUser = await userModel.findAll();
     res.json({ listagem: foundUser });
   } catch (error) {
+    console.log(error)
     return res.status(500).json({
       message: "Ocorreu um erro ao listar os Usuários",
+      erro: error
     });
   }
 }
@@ -191,7 +193,7 @@ async function resetPasswordRouteHandler(
     if (password !== cPass) {
       return res.status(400);
     }
-    const listenToken = await userModel.listenToekn({
+    const listenToken = await userModel.listenToken({
       token: token,
       email: email,
     });
