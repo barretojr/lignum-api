@@ -14,6 +14,36 @@ const estoqueModel = {
     (await conn).release();
     return rows;
   },
+
+  create: async (data) => {
+    try {
+      const [result] = await (await conn).query("", [data]);
+      (await conn).release();
+      return result.insertId;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  update: async (id, data) => {
+    try {
+      const [result] = await (await conn).query("", [data, id]);
+      (await conn).release();
+      return result[0].affectedRows;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  delete: async (id) => {
+    try {
+      const [result] = await (await conn).query("", [id]);
+      (await conn).release();
+      return result[0].affectedRows; 
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 module.exports = estoqueModel;

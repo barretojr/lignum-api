@@ -5,6 +5,11 @@ const EnumDepartamento = {
   PROJETISTA: 4,
 };
 
+const EnumEstoque = {
+  ACOMPRAR: 1,
+  SEMITEM: 2
+}
+
 const EnumStatus = {
   ATIVO: 1,
   INATIVO: 2,
@@ -18,8 +23,10 @@ const EnumFormaPagamento = {
   BOLETO: 5,
 };
 
+
 module.exports = {
   EnumDepartamento,
+  EnumEstoque,
   EnumStatus,
   EnumFormaPagamento,
 };

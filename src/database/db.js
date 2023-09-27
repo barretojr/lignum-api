@@ -5,8 +5,8 @@ var pool;
 
 async function connect() {
   try {
-    pool = await sql.connect(dbConfig);
-    return pool;
+    pool = await sql.connect(dbConfig);    
+    return pool;    
   } catch (error) {
     console.error("Erro ao conectar ao banco de dados: ", error);
     throw error;
